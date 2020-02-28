@@ -82,12 +82,11 @@ function displayLiffData() {
     document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
     document.getElementById('namaInfo').textContent = liff.getProfile()
         .then(profile => {
-            const name = profile.displayName;
+            return profile.displayName;
         })
         .catch((err) => {
             console.log('error', err);
         })
-
 }
 
 /**
@@ -138,9 +137,9 @@ function registerButtonHandlers() {
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': "What's up bro?"
+                'text': "Ini adalah pesan Random Angka by IFA"
             }]).then(function () {
-                window.alert('Whats wrong?');
+                window.alert('Random Angka mengirim pesan');
             }).catch(function (error) {
                 window.alert('Error sending message: ' + error);
             });

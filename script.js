@@ -20,7 +20,7 @@ btnRandom.addEventListener('click',function(e){
     } else {
         liff.sendMessages([{
             'type': 'text',
-            'text': "Kamu telah melakukan random angka yang bernilai : <b>" + random + "</b>"
+            'text': "Kamu telah melakukan random angka yang bernilai : " + random + ""
         }]).then(function () {
             window.alert('Kamu telah melakukan random angka');
         }).catch(function (error) {
