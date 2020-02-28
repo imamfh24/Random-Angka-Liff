@@ -80,13 +80,6 @@ function initializeApp() {
 function displayLiffData() {
     document.getElementById('isInClient').textContent = liff.isInClient();
     document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
-    document.getElementById('namaInfo').textContent = liff.getProfile()
-        .then(profile => {
-            return profile.displayName;
-        })
-        .catch((err) => {
-            console.log('error', err);
-        })
 }
 
 /**
@@ -105,7 +98,7 @@ function displayIsInClientInfo() {
 function registerButtonHandlers() {
     document.getElementById('openWindowButton').addEventListener('click', function () {
         liff.openWindow({
-            url: 'https://ifa-random-angka.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
+            url: 'https://example.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
             external: true
         });
     });
@@ -137,9 +130,9 @@ function registerButtonHandlers() {
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': "Ini adalah pesan Random Angka by IFA"
+                'text': "Anda telah menggunakan fitur Send Message!"
             }]).then(function () {
-                window.alert('Random Angka mengirim pesan');
+                window.alert('Ini adalah pesan dari fitur Send Message');
             }).catch(function (error) {
                 window.alert('Error sending message: ' + error);
             });
@@ -163,8 +156,4 @@ function toggleElement(elementId) {
     } else {
         elem.style.display = 'block';
     }
-}
-
-function showProfile() {
-
 }
