@@ -105,7 +105,7 @@ function displayIsInClientInfo() {
 function registerButtonHandlers() {
     document.getElementById('openWindowButton').addEventListener('click', function () {
         liff.openWindow({
-            url: 'https://example.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
+            url: 'https://ifa-random-angka.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
             external: true
         });
     });
