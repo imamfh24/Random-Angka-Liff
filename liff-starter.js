@@ -1,6 +1,6 @@
 window.onload = function () {
     const useNodeJS = false; // if you are not using a node server, set this value to false
-    const defaultLiffId = "1653901558-Z7LA5BJw"; // change the default LIFF value if you are not using a node server
+    const defaultLiffId = ""; // change the default LIFF value if you are not using a node server
 
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -80,6 +80,14 @@ function initializeApp() {
 function displayLiffData() {
     document.getElementById('isInClient').textContent = liff.isInClient();
     document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
+    document.getElementById('namaInfo').textContent = liff.getProfile()
+        .then(profile => {
+            const name = profile.displayName;
+        })
+        .catch((err) => {
+            console.log('error', err);
+        })
+
 }
 
 /**
@@ -130,9 +138,9 @@ function registerButtonHandlers() {
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': "Anda telah menggunakan fitur Send Message!"
+                'text': "What's up bro?"
             }]).then(function () {
-                window.alert('Ini adalah pesan dari fitur Send Message');
+                window.alert('Whats wrong?');
             }).catch(function (error) {
                 window.alert('Error sending message: ' + error);
             });
@@ -156,4 +164,8 @@ function toggleElement(elementId) {
     } else {
         elem.style.display = 'block';
     }
+}
+
+function showProfile() {
+
 }

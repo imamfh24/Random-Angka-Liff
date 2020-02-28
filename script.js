@@ -7,10 +7,24 @@ function setBatas (){
 }
 
 const btnRandom = document.getElementById('randomAngka');
-btnRandom.addEventListener('click',function(){
+btnRandom.addEventListener('click',function(e){
+    e.preventDefault();
     const batasan = setBatas();
     const random = Math.round(Math.random() * batasan);
     
     const nilai = document.getElementById('hasilRandom')
     nilai.innerHTML = random;
-})
+
+    if (!liff.isInClient()) {
+        sendAlertIfNotInClient();
+    } else {
+        liff.sendMessages([{
+            'type': 'text',
+            'text': "Kamu telah melakukan random angka yang bernilai : <b>" + random + "</b>"
+        }]).then(function () {
+            window.alert('Kamu telah melakukan random angka');
+        }).catch(function (error) {
+            window.alert('What happend?');
+        });
+    }
+});
