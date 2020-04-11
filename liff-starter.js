@@ -1,6 +1,6 @@
 window.onload = function () {
     const useNodeJS = false; // if you are not using a node server, set this value to false
-    const defaultLiffId = "1653902451-5NB7PxKn"; // change the default LIFF value if you are not using a node server
+    const defaultLiffId = "1653901558-Z7LA5BJw"; // change the default LIFF value if you are not using a node server
 
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -157,23 +157,3 @@ function toggleElement(elementId) {
         elem.style.display = 'block';
     }
 }
-
-
-liff.getProfile().then(function (profile) {
-    document.getElementById('userIdProfileField').textContent = profile.userId;
-    document.getElementById('displayNameField').textContent = profile.displayName;
-
-    const profilePictureDiv = document.getElementById('profilePictureDiv');
-    if (profilePictureDiv.firstElementChild) {
-        profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-    }
-    const img = document.createElement('img');
-    img.src = profile.pictureUrl;
-    img.alt = 'Profile Picture';
-    profilePictureDiv.appendChild(img);
-
-    document.getElementById('statusMessageField').textContent = profile.statusMessage;
-    toggleProfileData();
-}).catch(function (error) {
-    window.alert('Error getting profile: ' + error);
-});
